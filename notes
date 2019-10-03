@@ -1,0 +1,51 @@
+You will be creating a project which will allow you to manage Students and Schools.
+
+Focus on functionality, feel free to come up with your own UI as long as the functionality is there.
+
+list schools
+list students
+school detail
+create student
+delete a student
+add student to school
+remove student from school
+show the most popular school
+show the school with the highest GPA
+================================================
+A School has the following properties:
+
+id UUID
+name
+imageURL ? how to do this?
+
+===================================================
+A Student has the following properties
+
+id UUID
+firstName
+lastName
+email - unique
+GPA
+
+A Student can belong to a School and a School can have many students
+
+===================================================
+
+Routes
+
+GET, POST, PUT, DELETE /api/students
+GET, POST, PUT, DELETE /api/schools (you will only need GET for this project)
+
+*you will not need to use include for any of your routes
+=========================================================
+*keep your redux store as simple as possible, a list of students, and schools will be suffice
+
+*The most popular school is the one with the most students.
+The top school is the school with the highest average GPA.
+Restrictions
+======================================================
+RESTRICTIONS
+The front end of your project should be written in react, using react-router-dom, redux, and react-redux.
+The back end of your project should be written in express using Sequelize for your data models. This could be a good time to do some testing https://www.youtube.com/playlist?list=PLmXgRzDsvB4fxWxnC5oV8z2By6dUEHf2P.
+You can get things started with inline babel and move over to webpack when you start seeing some results.
+You should deploy your application

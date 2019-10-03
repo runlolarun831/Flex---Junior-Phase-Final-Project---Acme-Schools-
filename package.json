@@ -1,0 +1,25 @@
+{
+  "name": "Flex---Junior-Phase-Final-Project---Acme-Schools-",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/runlolarun831/Flex---Junior-Phase-Final-Project---Acme-Schools-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/runlolarun831/Flex---Junior-Phase-Final-Project---Acme-Schools-/issues"
+  },
+  "homepage": "https://github.com/runlolarun831/Flex---Junior-Phase-Final-Project---Acme-Schools-#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^7.12.1",
+    "sequelize": "^5.19.2"
+  }
+}
