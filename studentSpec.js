@@ -8,14 +8,6 @@ describe('My Application', () => {
 
   describe('DataLayer', () => {
 
-    describe('School model', () => {
-
-      it('there are 6 schools', async() => {
-        const schools = await School.findAll();
-        expect(schools.length).to.equal(6);
-      });
-    })
-
     describe('Student model', () => {
       it('there is 1 student', async() => {
         const students = await Student.findAll();

@@ -12,11 +12,11 @@ remove student from school
 show the most popular school
 show the school with the highest GPA
 ================================================
-A School has the following properties:
+XA School has the following properties:
 
-id UUID
-name
-imageURL ? how to do this?
+Xid UUID
+Xname
+---->imageURL ? how to do this?
 
 ===================================================
 A Student has the following properties
@@ -27,7 +27,7 @@ lastName
 email - unique
 GPA
 
-A Student can belong to a School and a School can have many students
+XA Student can belong to a School and a XSchool can have many students
 
 ===================================================
 
