@@ -6,7 +6,7 @@ import { addSchoolFromServer } from './store';
 const _Home = ({ schools }) => <div>
   <h1>Home</h1>
   <div>Our most popular school is BLANK with BLANK students.</div>
-  <div>Our top performing school is BLANK with an average GPA of 3.5</div>
+  <div>Our top performing school is BLANK with an average GPA of BLANK</div>
 </div>
 ;
 

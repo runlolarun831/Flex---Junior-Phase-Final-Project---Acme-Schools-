@@ -1,25 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchSchools } from './store';
+import StudentForm from './Form';
 
-
-// this is unconnected component
-// const _Schools = ({ schools }) => {
-//   return (
-//     <ul>
-//       {
-//         schools.map( school => {
-//           return (
-//             <li key={ school.id }>(school.name</li>
-//           )
-//         })
-//       }
-//     </ul>
-//   )
-// }
-  const _Schools = ({ schools }) => <div>
-  Schools - there are ({schools})
-</div>
+//this is unconnected component
+const _Schools = ({ schools }) => {
+  return (
+    <div>
+      <StudentForm />
+      <ul>
+      {
+        schools.map( school => {
+          return (
+            <li key={ school.id }>{school.name}</li>
+          )
+        })
+      }
+      </ul>
+    </div>
+  )
+}
 
 const mapStateToProps = ({ schools }) => ({ schools });
 

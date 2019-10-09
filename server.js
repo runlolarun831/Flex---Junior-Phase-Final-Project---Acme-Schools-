@@ -3,6 +3,7 @@ const app = express();
 //const db = require('./db');
 const path = require('path');
 
+app.use(express.json()); //middleware
 
 app.use('/dist', express.static(path.join(__dirname, 'dist')));
 
@@ -60,7 +61,7 @@ app.get('/', (req, res, next) => res.sendFile(path.join(__dirname, 'index.html')
 
   const syncAndSeed = async() => {
     await conn.sync({ force: true });
-    const schoolNames = [ 'mit', 'harvard', 'ucla', 'ccny', 'brown', 'apex tech' ];
+    const schoolNames = [ 'MIT', 'Harvard', 'UCLA', 'CCNY', 'Brown', 'Apex Tech' ];
 
     const [ mit, harvard, ucla, ccny, brown, apexTech ] = await Promise.all(schoolNames.map(_name => School.create({ name: _name} )));
 
@@ -78,18 +79,32 @@ app.get('/', (req, res, next) => res.sendFile(path.join(__dirname, 'index.html')
     }
   }
 
-  //doesn't work
- // app.get('/api/schools', (req, res, next) => res.send(School);
-
   app.get('/api/schools', (req, res, next) => {
     School.findAll()
     .then(schools => res.send(schools))
     .catch(next)
     });
+  app.post('/api/schools',(req, res, next) => {
+    School.create(req.body)
+    .then(school => res.send(school)) //this created data going back to thunk
+    .catch(next)
+    });
 
 
+    app.get('/api/students', (req, res, next) => {
+      Student.findAll()
+      .then(students => res.send(students))
+      .catch(next)
+      });
+    app.post('/api/students', (req, res, next) => {
+      Student.create(req.body)
+      .then(student => res.send(student)) //this created data going back to thunk
+      .catch(next)
+      });
 //environmental var. for port
 const port = process.env.PORT || 3000;
 
 // verify that server is working
 app.listen(port, () => console.log(`listening on port ${port}`));
+
+module.exports = app;//you need this

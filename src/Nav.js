@@ -5,16 +5,18 @@ import { connect } from 'react-redux';
 
 //this is an unconnected component
 
-const _Nav = ({ location }) => {
+const _Nav = ({ schools, students, location }) => {
   return (
     <nav>
-      <Link to='/schools'>Schools </Link>
+      <h2>Acme Schools</h2>
+      <Link to='/schools'>Schools ({ schools.length })</Link>
+      <Link to='/students'>Students ({ /*students.length*/ })</Link>
     </nav>
   );
 };
 
-//new way to connect comps.
-//replaced state w/ {people}
+// connect comps.
+
 const Nav = connect(({schools}) => {
   return {
     schools: schools

@@ -78,9 +78,10 @@ const fetchSchools = () => {
     dispatch(setSchools(schools));
   };
 };
-const addSchoolFromServer = () => {
+//()carries the data from comp tp thunk
+const addSchoolFromServer = (_school) => {
   return async(dispatch) => {
-    const school = (await axios.post('/api/schools')).data;
+    const school = (await axios.post('/api/schools', _school)).data;
     dispatch(addSchool(school));
   };
 };
