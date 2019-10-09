@@ -39,19 +39,19 @@ app.get('/', (req, res, next) => res.sendFile(path.join(__dirname, 'index.html')
     },
     firstName: {
       type: STRING,
-      allowNull: false
+      //allowNull: false
     },
     lastName: {
       type: STRING,
-      allowNull: false
+      //allowNull: false
     },
     email: {
       type: STRING,
-      allowNull: false
+      //allowNull: false
     },
     gpa: {
       type: DECIMAL,
-      allowNull: false
+      //allowNull: false
     }
   })
 
@@ -84,7 +84,7 @@ app.get('/', (req, res, next) => res.sendFile(path.join(__dirname, 'index.html')
     .then(schools => res.send(schools))
     .catch(next)
     });
-  app.post('/api/schools',(req, res, next) => {
+  app.post('/api/schools', (req, res, next) => {
     School.create(req.body)
     .then(school => res.send(school)) //this created data going back to thunk
     .catch(next)

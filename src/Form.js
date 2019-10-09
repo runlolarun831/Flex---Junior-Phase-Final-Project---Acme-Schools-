@@ -14,9 +14,14 @@ class StudentForm extends React.Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
+  //working on this it submits empty values to database
   onChange(ev) {
+    console.log([ev.target.name]);
+    console.log([ev.target.value]);
     this.setState({
-      name: ev.target.value
+      //[ev.target.name]: ev.target.value
+       ev.target.name: ev.target.value,
+
     })
   }
   onSubmit(ev) {
@@ -34,14 +39,21 @@ class StudentForm extends React.Component {
   render(){
     return (
       <form id='student'>
-        First Name<input name='firstName' value={ this.state.firstName } onChange={ this.onChange } />
-        Last Name<input name='lastName' value={this.state.lastName } onChange={ this.onChange } />
-        Email<input name='email' value={this.state.email } onChange={ this.onChange } />
-        GPA<input name='gpa' value={this.state.gpa } onChange={ this.onChange } />
-        <button onClick={ this.onSubmit }>Save</button>
+        <p>First Name
+          <input id='firstName' name='firstName' value={ this.state.firstName } onChange={ this.onChange } />
+        </p>
+        <p>Last Name
+          <input id='lastName' name='lastName' value={this.state.lastName } onChange={ this.onChange } />
+        </p>
+        <p>Email
+          <input id='email' name='email' value={this.state.email } onChange={ this.onChange } />
+        </p>
+        <p>GPA
+          <input id='gpa' name='gpa' value={this.state.gpa } onChange={ this.onChange } />
+        </p>
+        <button onClick={ this.onSubmit }>Save</button><br></br>
       </form>
     )
-
   }
 }
 // don't have explicitly pass args this way
