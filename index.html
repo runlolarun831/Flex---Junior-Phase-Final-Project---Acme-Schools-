@@ -1,8 +1,49 @@
 <html>
   <head>
     <script defer src='./dist/main.js'></script>
+<style>
+body {
+  margin: 0;
+  font-family: verdana;
+}
+nav {
+  background-color: dodgerblue;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav a {
+  color: white;
+  /* border: solid 1px white; */
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+}
+
+nav a.active {
+  background-color: white;
+}
+
+.container {
+  margin: 1rem;
+}
+
+@media (max-width: 600px){
+  body {
+    font-size: 2.0rem;
+  }
+  nav {
+    flex-direction: column;
+  }
+  nav a {
+    margin-bottom: 1rem;
+  }
+}
+</style>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0' />
   </head>
   <body>
     <div id='root'></div>
   </body>
 </html>
+

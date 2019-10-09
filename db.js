@@ -1,3 +1,4 @@
+//not using for now
 const Sequelize = require('sequelize');
 const { UUID, UUIDV4, STRING, DECIMAL } = Sequelize;
 
