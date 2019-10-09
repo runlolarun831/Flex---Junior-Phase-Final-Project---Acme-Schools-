@@ -9,12 +9,14 @@ import Nav from './Nav';
 import Home from './Home';
 import Schools from './Schools';
 import Students from './Students';
-import store, { fetchSchools } from './store';
+import store, { fetchSchools, fetchStudents} from './store';
 
 //connected components get rendered
 class App extends React.Component{
   async componentDidMount(){
     store.dispatch(fetchSchools())
+    store.dispatch(fetchStudents())
+    store.dispatch(addStudentsFromServer())
   }
   render(){
     return (

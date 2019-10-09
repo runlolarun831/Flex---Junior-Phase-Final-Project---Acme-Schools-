@@ -14,14 +14,12 @@ class StudentForm extends React.Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
-  //working on this it submits empty values to database
+  //working on this it submits empty values (null) to database
   onChange(ev) {
     console.log([ev.target.name]);
     console.log([ev.target.value]);
     this.setState({
-      //[ev.target.name]: ev.target.value
-       ev.target.name: ev.target.value,
-
+      [ev.target.name]: ev.target.value
     })
   }
   onSubmit(ev) {

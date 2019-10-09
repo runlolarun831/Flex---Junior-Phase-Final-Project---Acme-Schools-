@@ -99,9 +99,9 @@ const fetchStudents = () => {
     dispatch(setStudents(students));
   };
 };
-const addStudentFromServer = () => {
+const addStudentFromServer = (_student) => {
   return async(dispatch) => {
-    const student = (await axios.post('/api/students')).data;
+    const student = (await axios.post('/api/students', _student)).data;
     dispatch(addStudent(student));
   };
 };
@@ -113,5 +113,4 @@ const deleteStudentFromServer = () => {
 };
 
 export default store;
-export { setSchools, fetchSchools, addSchool, addSchoolFromServer, deleteSchool, deleteSchoolFromServer };
-export { setStudents, fetchStudents, addStudent, addStudentFromServer, deleteStudent, deleteStudentFromServer };
+export { setSchools, fetchSchools, addSchool, addSchoolFromServer, deleteSchool, deleteSchoolFromServer,  setStudents, fetchStudents, addStudent, addStudentFromServer, deleteStudent, deleteStudentFromServer };

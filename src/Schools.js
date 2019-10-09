@@ -1,13 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchSchools } from './store';
-import StudentForm from './Form';
+//import SchoolForm from './FormSchool';
 
 //this is unconnected component
 const _Schools = ({ schools }) => {
+  schools.map( school => {
+    console.log(school.name);
+  })
   return (
     <div>
-      <StudentForm />
+     {/* <SchoolForm />*/}
       <ul>
       {
         schools.map( school => {

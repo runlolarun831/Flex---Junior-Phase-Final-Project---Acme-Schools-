@@ -10,16 +10,17 @@ const _Nav = ({ schools, students, location }) => {
     <nav>
       <h2>Acme Schools</h2>
       <Link to='/schools'>Schools ({ schools.length })</Link>
-      <Link to='/students'>Students ({ /*students.length*/ })</Link>
+      <Link to='/students'>Students ({ students.length })</Link>
     </nav>
   );
 };
 
 // connect comps.
 
-const Nav = connect(({schools}) => {
+const Nav = connect(({schools, students}) => {
   return {
-    schools: schools
+    schools: schools,
+    students: students
     //people: state.people //video#1
     //count: state.people.length //video#2(a)massaging the state
     //count: schools.length

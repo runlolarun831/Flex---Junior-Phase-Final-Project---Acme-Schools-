@@ -39,19 +39,19 @@ app.get('/', (req, res, next) => res.sendFile(path.join(__dirname, 'index.html')
     },
     firstName: {
       type: STRING,
-      //allowNull: false
+      allowNull: false
     },
     lastName: {
       type: STRING,
-      //allowNull: false
+      allowNull: false
     },
     email: {
       type: STRING,
-      //allowNull: false
+      allowNull: false
     },
     gpa: {
       type: DECIMAL,
-      //allowNull: false
+      allowNull: false
     }
   })
 
@@ -60,13 +60,16 @@ app.get('/', (req, res, next) => res.sendFile(path.join(__dirname, 'index.html')
   School.hasMany(Student);
 
   const syncAndSeed = async() => {
-    await conn.sync({ force: true });
+    await conn.sync({ force: false });
     const schoolNames = [ 'MIT', 'Harvard', 'UCLA', 'CCNY', 'Brown', 'Apex Tech' ];
 
     const [ mit, harvard, ucla, ccny, brown, apexTech ] = await Promise.all(schoolNames.map(_name => School.create({ name: _name} )));
 
     const studentNames = [{ firstName: 'Isaac', lastName: 'Kerns', email: 'isaackerns@gmail.com', gpa: 3.75, schoolId: harvard.id}, { firstName: 'Maeve', lastName: 'Smith', email: 'msmith@gmail.com', gpa: 3.99, schoolId: harvard.id} ];
-    await Promise.all(studentNames.map(name => Student.create({ firstName: name.firstName, lastName: name.lastName, email: name.email, gpa: name.gpa, school: name.school })));
+
+    // await Promise.all(studentNames.map(name => Student.create({ firstName: name.firstName, lastName: name.lastName, email: name.email, gpa: name.gpa, school: name.school })));
+
+    await Promise.all(studentNames.map(name => Student.create(name)));
   };
 
   syncAndSeed();

@@ -5,9 +5,13 @@ import StudentForm from './Form';
 
 //this is unconnected component
 const _Students = ({ students }) => {
+  students.map( student => {
+    console.log(student.name);
+  })
   return (
     <div>
       <StudentForm />
+      <h1>hi</h1>
       <ul>
       {
         students.map( student => {
@@ -23,11 +27,11 @@ const _Students = ({ students }) => {
 
 const mapStateToProps = ({ students }) => ({ students });
 
-//not using delete School yet for testing
+//not using
 const mapDispatchToProps = (dispatch) => {
   return {
-    addStudent: () => {
-      dispatch(addStudentFromServer());
+    deleteStudent: () => {
+      dispatch(deleteStudentFromServer());
     }
   };
 };
