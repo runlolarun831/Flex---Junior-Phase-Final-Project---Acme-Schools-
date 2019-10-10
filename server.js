@@ -11,7 +11,7 @@ app.get('/', (req, res, next) => res.sendFile(path.join(__dirname, 'index.html')
 
 
   const Sequelize = require('sequelize');
-  const { UUID, UUIDV4, STRING, DECIMAL } = Sequelize;
+  const { UUID, UUIDV4, STRING, DECIMAL, VIRTUAL } = Sequelize;
 
   // environmental var. for database
   const conn = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost/acme_schools_testing_db');
@@ -47,12 +47,20 @@ app.get('/', (req, res, next) => res.sendFile(path.join(__dirname, 'index.html')
     },
     email: {
       type: STRING,
-      allowNull: false
+      allowNull: false,
+      unique: true
     },
     gpa: {
       type: DECIMAL,
       allowNull: false
-    }
+    }/*,
+    fullName: {
+      type: VIRTUAL,
+      allowNull: false,
+      get: function() {
+        return `$(this.firstName}$(this.lastName}`
+      }
+    }*/
   })
 
   // connection/relationship btwn. models
@@ -60,16 +68,16 @@ app.get('/', (req, res, next) => res.sendFile(path.join(__dirname, 'index.html')
   School.hasMany(Student);
 
   const syncAndSeed = async() => {
-    await conn.sync({ force: false });
+    await conn.sync({ force: true });
     const schoolNames = [ 'MIT', 'Harvard', 'UCLA', 'CCNY', 'Brown', 'Apex Tech' ];
 
     const [ mit, harvard, ucla, ccny, brown, apexTech ] = await Promise.all(schoolNames.map(_name => School.create({ name: _name} )));
 
     const studentNames = [{ firstName: 'Isaac', lastName: 'Kerns', email: 'isaackerns@gmail.com', gpa: 3.75, schoolId: harvard.id}, { firstName: 'Maeve', lastName: 'Smith', email: 'msmith@gmail.com', gpa: 3.99, schoolId: harvard.id} ];
 
-    // await Promise.all(studentNames.map(name => Student.create({ firstName: name.firstName, lastName: name.lastName, email: name.email, gpa: name.gpa, school: name.school })));
+     await Promise.all(studentNames.map(name => Student.create({ firstName: name.firstName, lastName: name.lastName, email: name.email, gpa: name.gpa, school: name.school })));
 
-    await Promise.all(studentNames.map(name => Student.create(name)));
+    //await Promise.all(studentNames.map(name => Student.create(name)));
   };
 
   syncAndSeed();
@@ -93,7 +101,6 @@ app.get('/', (req, res, next) => res.sendFile(path.join(__dirname, 'index.html')
     .catch(next)
     });
 
-
     app.get('/api/students', (req, res, next) => {
       Student.findAll()
       .then(students => res.send(students))
@@ -104,6 +111,11 @@ app.get('/', (req, res, next) => res.sendFile(path.join(__dirname, 'index.html')
       .then(student => res.send(student)) //this created data going back to thunk
       .catch(next)
       });
+    app.delete('/api/students/:id', (req, res, next) => {
+      Student.findByPK(req.param.id)
+      .then(student => res.send(student)))
+      .catch(next)
+    });
 //environmental var. for port
 const port = process.env.PORT || 3000;
 

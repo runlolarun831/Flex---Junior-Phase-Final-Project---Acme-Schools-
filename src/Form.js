@@ -16,8 +16,8 @@ class StudentForm extends React.Component {
   }
   //working on this it submits empty values (null) to database
   onChange(ev) {
-    console.log([ev.target.name]);
-    console.log([ev.target.value]);
+    //console.log([ev.target.name]);
+//    console.log([ev.target.value]);
     this.setState({
       [ev.target.name]: ev.target.value
     })
@@ -32,6 +32,7 @@ class StudentForm extends React.Component {
       gpa: ''
     }); //clears input
   }
+
 
   //name attr. must be same as corres. state
   render(){

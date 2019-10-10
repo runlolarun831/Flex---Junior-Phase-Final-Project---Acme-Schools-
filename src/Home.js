@@ -5,8 +5,8 @@ import { addSchoolFromServer } from './store';
 //this is an unconnected component
 const _Home = ({ schools, students }) => <div>
   <h1>Home</h1>
-  <div>Our most popular school is BLANK with BLANK students.</div>
-  <div>Our top performing school is BLANK with an average GPA of BLANK</div>
+  <div>Our most popular school is BLANK with BLANK students.{schools.length}</div>
+  <div>Our top performing school is BLANK with an average GPA of BLANK{students.length}</div>
 </div>
 ;
 
