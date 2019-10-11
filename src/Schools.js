@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchSchools } from './store';
-//import SchoolForm from './FormSchool';
+import SchoolForm from './FormSchool';
 
 //this is unconnected component
 const _Schools = ({ schools }) => {
@@ -10,12 +10,12 @@ const _Schools = ({ schools }) => {
   })
   return (
     <div>
-     {/* <SchoolForm />*/}
+     <SchoolForm />
       <ul>
       {
         schools.map( school => {
           return (
-            <li key={ school.id }>{school.name}</li>
+            <li key={ school.id }>{school.id}</li>
           )
         })
       }

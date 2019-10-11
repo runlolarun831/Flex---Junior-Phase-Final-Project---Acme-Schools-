@@ -68,7 +68,8 @@ app.get('/', (req, res, next) => res.sendFile(path.join(__dirname, 'index.html')
   School.hasMany(Student);
 
   const syncAndSeed = async() => {
-    await conn.sync({ force: true });
+    //await conn.sync({ force: true });
+    await conn.sync({ force: false });
     const schoolNames = [ 'MIT', 'Harvard', 'UCLA', 'CCNY', 'Brown', 'Apex Tech' ];
 
     const [ mit, harvard, ucla, ccny, brown, apexTech ] = await Promise.all(schoolNames.map(_name => School.create({ name: _name} )));
@@ -113,7 +114,7 @@ app.get('/', (req, res, next) => res.sendFile(path.join(__dirname, 'index.html')
       });
     app.delete('/api/students/:id', (req, res, next) => {
       Student.findByPK(req.param.id)
-      .then(student => res.send(student)))
+      .then(student => res.send(student))
       .catch(next)
     });
 //environmental var. for port

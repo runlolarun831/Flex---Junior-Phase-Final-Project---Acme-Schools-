@@ -16,7 +16,7 @@ class StudentForm extends React.Component {
   }
   //working on this it submits empty values (null) to database
   onChange(ev) {
-    //console.log([ev.target.name]);
+    console.log('this', [ev.target]);//test
 //    console.log([ev.target.value]);
     this.setState({
       [ev.target.name]: ev.target.value
