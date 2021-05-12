@@ -28,8 +28,9 @@ const _Students = ({ students }) => {
 //   onSubmit(ev) {
 //     ev.preventDefault();
 //     this.props.delete(ev.target.id);
-//   }
+//    }
 
+//   render(){
     return (
       <div>
         <StudentForm />
@@ -43,9 +44,9 @@ const _Students = ({ students }) => {
                   <div> { student.firstName }  { student.lastName }</div>
                   <div>{ student.gpa }</div>
                   <div>{ student.id }</div>
-                {/*}  <form>
-                    <button onClick={() => this.props.delete(ev.target.id)}>Destroy Student</button>
-            </form> */}
+                  <form>
+                    <button onClick={() => this.delete(ev.target.id)}>Destroy Student</button>
+            </form>
                 </div>
               </li>
             )
@@ -54,6 +55,7 @@ const _Students = ({ students }) => {
         </ul>
       </div>
     )
+//   }
  }
 
 const mapStateToProps = ({ students }) => ({ students });

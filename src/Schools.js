@@ -15,7 +15,7 @@ const _Schools = ({ schools }) => {
       {
         schools.map( school => {
           return (
-            <li key={ school.id }>{school.id}</li>
+            <li key={ school.id }>{school.name}  {school.id}</li>
           )
         })
       }

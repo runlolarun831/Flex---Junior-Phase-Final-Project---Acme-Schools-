@@ -70,7 +70,6 @@ const deleteStudent = (student) => {
   return { type: DELETE_STUDENT, student };
 };
 
-
 // thunks for School
 const fetchSchools = () => {
   return async(dispatch) => {
